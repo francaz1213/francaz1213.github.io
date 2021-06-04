@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>My Amazing Website</title>
+        <style>
+            body {
+                background: rgb(250, 133, 0);
+                color: rgb(0, 0, 0);
+                padding: 10px;
+                font-family: arial;
+            }
+            #all-contents {
+                max-width: 800px;
+                margin: auto;
+            }
+        
+            /* navigation menu */
+            nav {
+                background: rgb(39, 2, 252);
+                margin: 0 auto;
+                margin-bottom: 20px;
+                display: flex;
+                padding: 10px;
+            }
+            h1 {
+                display: flex;
+                align-items: center;
+                color: rgb(89, 255, 139);
+                flex: 1;
+                margin: 0;
+            }
+            #nav-ul {
+                list-style-image: none;
+            }
+            .nav-li {
+                display: inline-block;
+                padding: 0 10px;
+            }
+            a {
+                text-decoration: none;
+                color: rgb(255, 0, 0);
+            }
+        
+            /* main container area beneath menu */
+            main {
+                background: rgb(245, 238, 219);
+                display: flex;
+            }
+            .sidebar {
+                margin-right: 25px;
+                padding: 10px;
+            }
+            .sidebar-img {
+                width: 200px;
+            }
+            .content {
+                flex: 1;
+                padding: 15px;
+            }
+            #interests {
+                border: 4px silver ridge;
+                padding: 8px;
+            }
+            h2, h3 {
+                margin: 0px;
+            }
+        </style>
+        <link href="https://media.tenor.com/images/acd1d8fc5794a5b25dc2600a1a6fcdc9/tenor.gif" type="image/gif">
+    </head>
+    <body>
+        <!-- content goes here-->
+        <div id="all-contents" class="content">
+            <nav>
+
+            </nav>
+            <main>
+                <!-- side bar section-->
+                <div class = "sidebar">
+                    <img class = "sidebar-img"src="https://upload.wikimedia.org/wikipedia/en/thumb/8/8d/Dark_Souls_Cover_Art.jpg/220px-Dark_Souls_Cover_Art.jpg">
+                </div>
+                <!-- content section-->
+                <div>
+                    <h2>Francis</h2>
+                    <p>Student at Lusher High
+                        <!--Interests section-->
+                        <div id="Interests>
+                        <h3>Interests</h3>
+                        <ul id="nav-ul">
+                            <li class="nav-li"><a href="index.html"> Home </a></li>
+                            <li class="nav-li"><a href="portfolio.html"> Portfolio </a></li>
+                            <li>Video Games</li>
+                            <li>Music</li>
+                            <li>Dark Souls</li>
+                        </ul>
+                        </div>
+                    </p>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>
