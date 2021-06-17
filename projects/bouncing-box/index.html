@@ -18,6 +18,7 @@
 		}
 		.board{
 			height: 100vh;
+			width: 100vh;
 		}
 	</style>
 	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
@@ -61,16 +62,23 @@
 			//////////////////////////////////////////////////////////////////
 			
 			// TODO 2 - Variable declarations 
-			
-
-			
+			var newPositionX = 0;
+			newPositionX = 0 + 10;
+			moveBoxTo(newPositionX);
+			newPositionX = 10 + 10;
+			moveBoxTo(newPositionX);
+			newPositionX = 20 + 10;
+			moveBoxTo(newPositionX);
+			newPositionX = 30 + 10;
+			moveBoxTo(newPositionX);
+			var points = 0;
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
 			it should move the Box to a new location. If the box drifts off the screen
 			turn it around! 
 			*/
 			function update() {
-				
+				moveBoxTo(newPositionX);
 
 			};
 
@@ -80,7 +88,9 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-				
+				positionX = 0;
+				points = points = 10;
+				changeBoxText(points);
 
 
 			};
