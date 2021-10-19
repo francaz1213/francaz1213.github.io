@@ -38,6 +38,7 @@ function runProgram(){
   /* 
   Called in response to events.
   */
+  //pressed key handler
   function handleKeyDown(event) {
     if (event.which === KEY.ENTER) {
       console.log("enter pressed");
@@ -55,7 +56,7 @@ function runProgram(){
       console.log("up key pressed")
     }
   }
-
+//key database
   var KEY = {
     "ENTER": 13,
     "LEFT": 37,
@@ -63,8 +64,11 @@ function runProgram(){
     "UP": 38,
     "DOWN": 40
   }
-  
-
+  //pos and speed vars
+var positionX = 0;
+var positionY = 0;
+var speedX = 0;
+var speedY = 0;
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -79,4 +83,15 @@ function runProgram(){
   }
   
   }
+}
+function repositionGameItem(){
+  positionX += speedX; // update the position of the box along the x-axis
+  positionY += speedY; //update position of box along y-axis
+
+}
+
+function redrawGameItem(){
+  $("#gameItem").css("left", positionX);    // draw the box in the new location, positionX pixels away from the "left"
+  $("#gameItem").css("top", positionY);    // draw the box in the new location, positionX pixels away from the "left"
+
 }
