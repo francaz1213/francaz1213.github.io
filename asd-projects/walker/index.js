@@ -28,41 +28,41 @@ function runProgram(){
   */
 
   function handleKeyDown(event) {
-    console.log("down key pressed");
-
-  function newFrame() {
-    
-
-  }
-  
-  /* 
-  Called in response to events.
-  */
-  //pressed key handler
-  function handleKeyDown(event) {
     if (event.which === KEY.ENTER) {
       console.log("enter pressed");
     }
     else if(event.which === KEY.LEFT){
       console.log("left key pressed")
+      speedX = -5;
     }
     else if(event.which === KEY.RIGHT){
       console.log("right key pressed")
+      speedX = 5;
     }
     else if(event.which === KEY.DOWN){
       console.log("down key pressed")
+      speedY = -5;
     }
     else if(event.which === KEY.UP){
       console.log("up key pressed")
+      speedY = 5;
     }
   }
+  function newFrame() {
+    repositionGameItem();
+    redrawGameItem();
+  }
+  
+  /* 
+  Called in response to events.
+  */
 //key database
   var KEY = {
     "ENTER": 13,
     "LEFT": 37,
     "RIGHT": 39,
     "UP": 38,
-    "DOWN": 40
+    "DOWN": 40,
   }
   //pos and speed vars
 var positionX = 0;
@@ -83,13 +83,14 @@ var speedY = 0;
   }
   
   }
-}
+
+//changes y and x pos values
 function repositionGameItem(){
   positionX += speedX; // update the position of the box along the x-axis
   positionY += speedY; //update position of box along y-axis
 
 }
-
+//redraws gameItem
 function redrawGameItem(){
   $("#gameItem").css("left", positionX);    // draw the box in the new location, positionX pixels away from the "left"
   $("#gameItem").css("top", positionY);    // draw the box in the new location, positionX pixels away from the "left"
