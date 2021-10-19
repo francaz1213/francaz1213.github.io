@@ -38,9 +38,32 @@ function runProgram(){
   /* 
   Called in response to events.
   */
-  function handleEvent(event) {
-
+  function handleKeyDown(event) {
+    if (event.which === KEY.ENTER) {
+      console.log("enter pressed");
+    }
+    else if(event.which === KEY.LEFT){
+      console.log("left key pressed")
+    }
+    else if(event.which === KEY.RIGHT){
+      console.log("right key pressed")
+    }
+    else if(event.which === KEY.DOWN){
+      console.log("down key pressed")
+    }
+    else if(event.which === KEY.UP){
+      console.log("up key pressed")
+    }
   }
+
+  var KEY = {
+    "ENTER": 13,
+    "LEFT": 37,
+    "RIGHT": 39,
+    "UP": 38,
+    "DOWN": 40
+  }
+  
 
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
