@@ -12,7 +12,18 @@ function runProgram(){
   var FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
   
   // Game Item Objects
+  var speedX = 0;
+  var speedY = 0;
+  var posX = 0;
+  var posY = 0;
 
+  var KEY = {
+    "ENTER": 13,
+    "LEFT": 37,
+    "RIGHT": 39,
+    "UP": 38,
+    "DOWN": 40,
+  }
 
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
@@ -26,6 +37,11 @@ function runProgram(){
   On each "tick" of the timer, a new frame is dynamically drawn using JavaScript
   by calling this function and executing the code inside.
   */
+
+  function newFrame() {
+    //repositionGameItem();
+    redrawGameItem();
+  }
 
   function handleKeyDown(event) {
     if (event.which === KEY.ENTER) {
@@ -47,28 +63,17 @@ function runProgram(){
       console.log("up key pressed")
       speedY = 5;
     }
+
   }
-  function newFrame() {
-    repositionGameItem();
-    redrawGameItem();
-  }
+
   
   /* 
   Called in response to events.
   */
 //key database
-  var KEY = {
-    "ENTER": 13,
-    "LEFT": 37,
-    "RIGHT": 39,
-    "UP": 38,
-    "DOWN": 40,
-  }
+
   //pos and speed vars
-var positionX = 0;
-var positionY = 0;
-var speedX = 0;
-var speedY = 0;
+
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
