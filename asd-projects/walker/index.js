@@ -2,6 +2,11 @@
 
 $(document).ready(runProgram); // wait for the HTML / CSS elements of the page to fully load, then execute runProgram()
   
+var positionX;
+var positionY;
+var speedY;
+var speedX;
+
 function runProgram(){
   ////////////////////////////////////////////////////////////////////////////////
   //////////////////////////// SETUP /////////////////////////////////////////////
@@ -12,11 +17,12 @@ function runProgram(){
   var FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
   
   // Game Item Objects
-  var speedX = 0;
-  var speedY = 0;
-  var posX = 0;
-  var posY = 0;
-
+  
+  speedX = 0;
+  speedY = 0;
+  positionX = 0;
+  positionY = 0;
+  
   var KEY = {
     "ENTER": 13,
     "LEFT": 37,
@@ -24,11 +30,12 @@ function runProgram(){
     "UP": 38,
     "DOWN": 40,
   }
+  
 
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keydown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
-
+  $(document).on('keyup', handleKeyUp);   
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -39,9 +46,11 @@ function runProgram(){
   */
 
   function newFrame() {
-    //repositionGameItem();
+    repositionGameItem();
     redrawGameItem();
   }
+
+//event handler when arrow key is pressed
 
   function handleKeyDown(event) {
     if (event.which === KEY.ENTER) {
@@ -57,15 +66,21 @@ function runProgram(){
     }
     else if(event.which === KEY.DOWN){
       console.log("down key pressed")
-      speedY = -5;
+      speedY = 5;
     }
     else if(event.which === KEY.UP){
       console.log("up key pressed")
-      speedY = 5;
+      speedY = -5;
     }
 
   }
 
+//resets value of speedX and speedY
+
+  function handleKeyUp(event){
+    speedX = 0;
+    speedY = 0;
+  }
   
   /* 
   Called in response to events.
