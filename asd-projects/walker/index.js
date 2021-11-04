@@ -54,22 +54,22 @@ function runProgram(){
 
   function handleKeyDown(event) {
     if (event.which === KEY.ENTER) {
-      console.log("enter pressed");
+      
     }
     else if(event.which === KEY.LEFT){
-      console.log("left key pressed")
+      
       speedX = -5;
     }
     else if(event.which === KEY.RIGHT){
-      console.log("right key pressed")
+      
       speedX = 5;
     }
     else if(event.which === KEY.DOWN){
-      console.log("down key pressed")
+      
       speedY = 5;
     }
     else if(event.which === KEY.UP){
-      console.log("up key pressed")
+      
       speedY = -5;
     }
 
@@ -78,8 +78,12 @@ function runProgram(){
 //resets value of speedX and speedY
 
   function handleKeyUp(event){
-    speedX = 0;
-    speedY = 0;
+    if(event.which === KEY.LEFT || event.which === KEY.RIGHT){
+      speedX = 0;
+    }
+    if(event.which === KEY.UP || event.which === KEY.DOWN){
+      speedY = 0;
+    }
   }
   
   /* 
