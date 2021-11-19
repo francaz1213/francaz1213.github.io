@@ -37,21 +37,38 @@ Always start any programming task by clarifying what you want to do and then bre
 With your partner, consider each of these questions and make sure you are aligned on your answers:
 
 ### User Story / Gameplay
-- Describe the gameplay
+- Describe the 
+- two players control lines on opposite sides of the screen. the goal is to bounce a ball so that it reaches the opposite end of the screen
 - What are the conditions when the game begins? 
+- two players are given control of the lines and the ball is spawned in the middle of the screen. the ball will be pushed in a random direction
 - Does the game have an end? If so, what are the conditions for when it ends?
+- the game ends when the ball reaches the end of the screen. 
 - What `if`s will there be?
+- if positionX > screen size && if positionX < screen size
 
 ### Visual Game Components:
 - What are the visual game components? For example, in Bouncing Box, the game components were the board and the box.
   - Which will be static? (the board)
+  the background
   - Which will be animated? (the box)
+  the ball, the two lines 
 - What data will you need to manage each game component? For example, in Bouncing Box, the data values were `positionX`, `speedX`, and `points`.
+- positionX, positionY, speedX, speedY, points
 
 ### Events / Logic 
 - What events will occur in this game? (timer events, keyboard events, clicking events?)
+- when the arrow key up is pressed, the line will go up, when down is pressed the line goes down
+- when positionX of the ball is less than the screen size or more than the screen size, the game is over
 - How do those events affect the data of the program?
+- they affect the speed of the ball, its direction, and the position of the liens
 - For each "event", write out the high-level logic of what will happen. It is better (and tricky) to be as specific as you can while remaining high-level!
+- When the arrow key up is pressed
+1. the line goes up
+2. it goes down when the down arrow key is pressed
+- when the positionX of the ball is more than the size of the screen
+1. the game ends (left player wins)
+- when the positionX of the ball is less than the size of the screen
+1. the game ends (right player wins)
 
 For example: in bouncing box, when the box is clicked:
 1. The speed is increased
