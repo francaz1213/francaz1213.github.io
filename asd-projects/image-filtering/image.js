@@ -59,3 +59,4 @@ function rgbStringToArray(rgbStr) {
 function rgbArrayToString(rgbArray) {
     return "rgb("+rgbArray[RED]+","+rgbArray[GREEN]+","+rgbArray[BLUE]+")"
 }
+
