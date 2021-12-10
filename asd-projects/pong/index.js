@@ -52,3 +52,14 @@ function runProgram(){
   }
   
 }
+
+function factoryFunction(id){
+  var gameItem = {};
+  gameItem.x = parseFloat($("#id").css("left"));
+  gameItem.y = parseFloat($("#id").css("top"));
+  gameItem.width = $("#id").width();
+  gamieItem.height = $("#id").height();
+}
+factoryFunction("#gameItem");
+
+console.log(factoryFunction("#gameItem"));
