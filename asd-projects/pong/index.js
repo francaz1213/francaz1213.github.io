@@ -12,7 +12,7 @@ function runProgram(){
   const FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
   
   // Game Item Objects
-
+  var leftPaddle = factoryFunction("#leftpaddle");
 
   // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
@@ -58,8 +58,8 @@ function factoryFunction(id){
   gameItem.x = parseFloat($("#id").css("left"));
   gameItem.y = parseFloat($("#id").css("top"));
   gameItem.width = $("#id").width();
-  gamieItem.height = $("#id").height();
+  gameItem.height = $("#id").height();
 }
-factoryFunction("#gameItem");
 
-console.log(factoryFunction("#gameItem"));
+
+console.log(leftPaddle);
