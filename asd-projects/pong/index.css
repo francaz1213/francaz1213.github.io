@@ -15,13 +15,13 @@ body {
   width: 20px;
   height: 80px;
   border-radius: 10px;
+  position: absolute;
 }
 #leftpaddle {
   
   /*left: 100px;  /* Uncomment if you want to set a "starting" position */
   /*top: 100px;    /* Uncomment if you want to set a "starting" position */
 /* positioning */
-position: absolute;
 top: 100px;
 left: 10px;
 }
@@ -29,7 +29,6 @@ left: 10px;
   /*left: 100px;  /* Uncomment if you want to set a "starting" position */
   /*top: 100px;    /* Uncomment if you want to set a "starting" position */
 /* positioning */
-position: absolute;
 top: 100px;
 left: 410px;
 }

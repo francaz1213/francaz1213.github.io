@@ -12,7 +12,11 @@ function runProgram(){
   const FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
   
   // Game Item Objects
-  var leftPaddle = factoryFunction("#leftpaddle");
+  var leftPaddle = createGameItem("#leftpaddle");
+  var rightPaddle = createGameItem("#rightpaddle");
+
+  console.log(leftPaddle);
+  console.log(rightPaddle);
 
   // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
@@ -50,16 +54,16 @@ function runProgram(){
     // turn off event handlers
     $(document).off();
   }
-  
+  function createGameItem(id){
+    var gameItem = {};
+    gameItem.x = parseFloat($(id).css("left"));
+    gameItem.y = parseFloat($(id).css("top"));
+    gameItem.width = $(id).width();
+    gameItem.height = $(id).height();
+    return gameItem;
+  }
 }
 
-function factoryFunction(id){
-  var gameItem = {};
-  gameItem.x = parseFloat($("#id").css("left"));
-  gameItem.y = parseFloat($("#id").css("top"));
-  gameItem.width = $("#id").width();
-  gameItem.height = $("#id").height();
-}
 
 
-console.log(leftPaddle);
+
