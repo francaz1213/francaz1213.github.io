@@ -51,7 +51,6 @@ function runProgram(){
   function wallCollision(gameItem){
     
   }
-  ///////////////////////////////////////////////////////////////////////////////////
   function endGame() {
     // stop the interval timer
     clearInterval(interval);
@@ -59,7 +58,9 @@ function runProgram(){
     // turn off event handlers
     $(document).off();
   }
+  ///////////////////////////////////////////////////////////////////////////////////
   function createGameItem(id){
+    //create game item
     var gameItem = {};
     gameItem.id = id;
     gameItem.x = parseFloat($(id).css("left"));
@@ -82,11 +83,11 @@ function runProgram(){
   //HANDLE KEY UP FUNCTION
   function handleKeyUp(event){
     if(event.which === KEY.UPKEY){
-      leftPaddle.speedY = -7.5;//set speed of leftPaddle to -7.5
+      leftPaddle.speedY = 7.5;//set speed of leftPaddle to -7.5
       repositionGameItem(leftPaddle);
     }
     else if(event.which === KEY.UPARROW){
-      rightPaddle.speedY = -7.5;//set speed of rightPaddle to -7.5
+      rightPaddle.speedY = 7.5;//set speed of rightPaddle to -7.5
       repositionGameItem(rightPaddle);
     }
   }
@@ -102,11 +103,11 @@ function runProgram(){
   //HANDLE KEY DOWN FUNCTIOn
   function handleKeyDown(event){
     if(event.which === KEY.DOWNARROW){
-      rightPaddle.speedY = 7.5;//sets speed of rightPaddle to 7.5
+      rightPaddle.speedY = -7.5;//sets speed of rightPaddle to 7.5
       repositionGameItem(rightPaddle);//reposition rightPaddle
     }
     else if(event.which === KEY.DOWNKEY){
-      leftPaddle.speedY = 7.5;//sets speed of leftPaddle to 7.5
+      leftPaddle.speedY = -7.5;//sets speed of leftPaddle to 7.5
       repositionGameItem(leftPaddle);//reposition leftPaddle
     }
   }
@@ -121,10 +122,10 @@ function runProgram(){
   }
   var KEY = {
     ENTER: 13,
-    UPARROW: 38,
-    DOWNARROW: 40,
-    UPKEY: 87,
-    DOWNKEY: 83,
+    UPARROW: 40,
+    DOWNARROW: 38,
+    UPKEY: 83,
+    DOWNKEY: 87,
   }
 }
 
