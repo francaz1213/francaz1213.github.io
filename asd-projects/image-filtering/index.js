@@ -36,7 +36,7 @@ for(var i = 0; i < image.length; i++) {     //applyFilter function
 
 // TODO 6: Create the applyFilterNoBackground function
 function applyFilterNoBackground(filterFunction){
-backgroundColor = image[1][1];
+backgroundColor = image[0][0];
 for(var i = 0; i < image.length; i++) {     //applyFilter function 
     for(var y = 0; y < image[i].length; y++){
          rgbString = image[i][y]; //sets a value to rgbString
@@ -53,7 +53,7 @@ for(var i = 0; i < image.length; i++) {     //applyFilter function
 
 applyFilterNoBackground();
 // TODO 3 & 5: Create filter functions
-()=>{};function reddify(array){
+function reddify(array){
     array[RED] = 255; //changes value of red to 255 (tints red)
 }
 function decreaseBlue(array){
@@ -66,6 +66,5 @@ function keepInBounds(number){
     var result = Math.max(Math.min(number, 255), 0)
     return result;
 }
-console.log(keepInBounds(1,000));
-console.log("test");
+
 // CHALLENGE code goes below here
