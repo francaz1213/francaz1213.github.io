@@ -14,10 +14,22 @@ function runProgram(){
   const BOARD_HEIGHT = $("#board").height();
   const BOARD_X = 0;
   const BOARD_Y = 0;
+  const KEY = {
+    ENTER: 13,
+    UPARROW: 40,
+    DOWNARROW: 38,
+    UPKEY: 83,
+    DOWNKEY: 87,
+  }
+  console.log(KEY.DOWNARROW);
+  
   // Game Item Objects
   var leftPaddle = createGameItem("#leftpaddle");
   var rightPaddle = createGameItem("#rightpaddle");
   var ball = createGameItem("#ball")
+  console.log(leftPaddle);
+  var scoreLeft = 0;
+  var scoreRight = 0;
   // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keydown', handleKey);                           // change 'eventType' to the type of event you want to handle
@@ -34,6 +46,12 @@ function runProgram(){
   function newFrame() {
     redrawGameItem(leftPaddle);
     redrawGameItem(rightPaddle);
+    repositionGameItem(ball);
+    redrawGameItem(ball);
+    //wallCollision(leftPaddle);
+    //wallCollision(rightPaddle);
+    //wallCollision(ball);
+    //console.log(rightPaddle);
   }
   
   /* 
@@ -48,8 +66,7 @@ function runProgram(){
     ball.speedX = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
     ball.speedY = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
   }
-  function wallCollision(gameItem){
-    
+  
   }
   function endGame() {
     // stop the interval timer
@@ -69,6 +86,7 @@ function runProgram(){
     gameItem.height = $(id).height();
     gameItem.speedY = 0;
     gameItem.speedX = 0;
+    gameItem.hit = false;
     return gameItem;
   }
   //HANDLE KEY FUNCTION
@@ -82,11 +100,11 @@ function runProgram(){
   }
   //HANDLE KEY UP FUNCTION
   function handleKeyUp(event){
-    if(event.which === KEY.UPKEY){
+    if(event.which === KEY.UPKEY ){
       leftPaddle.speedY = 7.5;//set speed of leftPaddle to -7.5
       repositionGameItem(leftPaddle);
     }
-    else if(event.which === KEY.UPARROW){
+    else if(event.which === KEY.UPARROW ){
       rightPaddle.speedY = 7.5;//set speed of rightPaddle to -7.5
       repositionGameItem(rightPaddle);
     }
@@ -102,11 +120,11 @@ function runProgram(){
   }
   //HANDLE KEY DOWN FUNCTIOn
   function handleKeyDown(event){
-    if(event.which === KEY.DOWNARROW){
+    if(event.which === KEY.DOWNARROW ){
       rightPaddle.speedY = -7.5;//sets speed of rightPaddle to 7.5
       repositionGameItem(rightPaddle);//reposition rightPaddle
     }
-    else if(event.which === KEY.DOWNKEY){
+    else if(event.which === KEY.DOWNKEY ){
       leftPaddle.speedY = -7.5;//sets speed of leftPaddle to 7.5
       repositionGameItem(leftPaddle);//reposition leftPaddle
     }
@@ -119,14 +137,35 @@ function runProgram(){
   //REDRAW GAMEITEM FUNCTINO
   function redrawGameItem(gameItem){
     $(gameItem.id).css("top", gameItem.y);//changes the real position of game item to reflect gameitem.y
+    $(gameItem.id).css("left", gameItem.x);
   }
-  var KEY = {
-    ENTER: 13,
-    UPARROW: 40,
-    DOWNARROW: 38,
-    UPKEY: 83,
-    DOWNKEY: 87,
-  }
+  //WALL COLLISION
+  function wallCollision(gameItem){//checks if gameItem has hit the board limit, if yes sets hit = true
+    if(gameItem.x <= 0){
+        gameItem.hit = true;
+    }
+    else{
+      gameItem.hit = false;
+    }
+    if(gameItem.x + gameItem.width >= BOARD_WIDTH){
+      gameItem.hit = true;
+    }
+    else{
+      gameItem.hit = false;
+    }
+    if(gameItem.y <= 0){
+      gameItem.hit = true;
+    }
+    else{
+      gameItem.hit = false;
+    }
+    if(gameItem.Y + gameItem.height >= BOARD_HEIGHT){
+      gameItem.hit = true;
+    }
+    else{
+      gameItem.hit = false;
+    }
+    
 }
 
 

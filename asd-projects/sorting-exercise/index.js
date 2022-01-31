@@ -13,19 +13,19 @@ The CSS ids you will work with are:
 /////////////////////// YOUR WORK GOES BELOW HERE /////////////////////
 ///////////////////////////////////////////////////////////////////////
 
-function swap(array, i, j){
-    var temp = [i]; //stores temporary value for index[1]
+function swap(array, i, j) {
+    var temp = array[i]; //stores temporary value for index[1]
     array[i] = array[j]; //changes value of i to j
     array[j] = temp;//changes value of j to i
     drawSwap(array, i, j);//calls drawSwap function
 }
 
 // TODO 2: Implement bubbleSort
-async function bubbleSort(array){
-    var sorted = false; //sets sorted to false
-    while(sorted = false){//while sorted is false
-        for(var j = i+1; i <= array.length-1; i++){//for loop
-            if(array[i] < array[j]){//if array i is less than array j
+async function bubbleSort(array) {
+
+    for (var i = 0; i < array.length - 1; i++) {
+        for (var j = i + 1; j < array.length; j++) {//for loop
+            if (array[i].value > array[j].value) {//if array i is less than array j
                 swap(array, i, j); //swaps j and i in the array
                 updateCounter(bubbleCounter);
                 await sleep();
@@ -35,38 +35,37 @@ async function bubbleSort(array){
 }
 
 // TODO 3: Implement quickSort
-async function quicksort(array, left, right){
-if(array.length > 1){
-    var index = await partition(array, left, right);//assigns partition of parameters to index
-        if(left < index-1){
-            await quicksort(array, left, index-1);//quicksort left of index
+async function quickSort(array, left, right) {
+    if (array.length > 1) {
+        var index = await partition(array, left, right);//assigns partition of parameters to index
+        if (left < index - 1) {
+            await quickSort(array, left, index - 1);//quicksort left of index
         }
-        if(right > index){
-            await quicksort(array, index, right);//quicksort right of index
+        if (right > index) {
+            await quickSort(array, index, right);//quicksort right of index
         }
-}
+    }
 }
 
 // TODOs 4 & 5: Implement partition
-async function partition(array, left, right){
-    var pivot = array[Math.floor((right + left)/2)].value;//assignts 
-    while(left < right){
-        while(left < pivot){
-            left + 1;
-            while(right > pivot){
-                right - 1;
-                if(left < right){
-                    swap(array, left, right);
-                    updateCounter(quickCounter);
-                    await sleep();
-                }
-            }
+async function partition(array, left, right) {
+    var pivot = array[Math.floor((right + left) / 2)].value;//assignts 
+    while (left < right) {
+        while(array[right].value > pivot){
+            right -= 1;
         }
-        
+        while(array[left].value < pivot){
+            left += 1;
         }
-        return left + 1;
+        if(right > left){
+            swap(array, left, right);
+            updateCounter(quickCounter);
+            await sleep();
+        }
     }
-    
+    return left + 1;
+}
+
 
 
 // TODO 1: Implement swap
@@ -79,12 +78,12 @@ async function partition(array, left, right){
 //////////////////////////// HELPER FUNCTIONS /////////////////////////
 
 // this function makes the program pause by SLEEP_AMOUNT milliseconds whenever it is called
-function sleep(){
+function sleep() {
     return new Promise(resolve => setTimeout(resolve, SLEEP_AMOUNT));
 }
 
 // This function draws the swap on the screen
-function drawSwap(array, i, j){
+function drawSwap(array, i, j) {
     let element1 = array[i];
     let element2 = array[j];
 
@@ -95,6 +94,6 @@ function drawSwap(array, i, j){
 }
 
 // This function updates the specified counter
-function updateCounter(counter){
+function updateCounter(counter) {
     $(counter).text("Move Count: " + (parseFloat($(counter).text().replace(/^\D+/g, '')) + 1));
 }
