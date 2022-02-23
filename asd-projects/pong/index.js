@@ -171,9 +171,9 @@ function runProgram(){
     }
       }
       function doCollide(obj1, obj2){
-        if((obj1.x + obj1.width) >= obj2.x && (obj1.x + obj1.width) < (obj2.x + obj2.width)){
-          if((obj1.y + obj1.height) >= obj2.y && (obj1.y + obj1.height) <= (obj2.y + obj2.height)){
-            obj1.speedX = -obj1.speedX;
+        if((obj1.x + obj1.width) >= obj2.x && (obj1.x + obj1.width) < (obj2.x + obj2.width)){//checks if the x of obj1 is more than x of obj2 and less than obj2.width + obj2.x
+          if((obj1.y + obj1.height) >= obj2.y && (obj1.y + obj1.height) <= (obj2.y + obj2.height)){//same for y values
+            obj1.speedX = -obj1.speedX;//speedX becomes negative
           }
     }
   }
