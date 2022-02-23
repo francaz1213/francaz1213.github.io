@@ -53,6 +53,8 @@ function runProgram(){
     wallCollision(ball);
     doCollide(ball, leftPaddle);
     doCollide(ball, rightPaddle);
+    scoreCheck(leftPaddle);
+    scoreCheck(rightPaddle);
   }
   
   /* 
@@ -175,10 +177,17 @@ function runProgram(){
           if((obj1.y + obj1.height) >= obj2.y && (obj1.y + obj1.height) <= (obj2.y + obj2.height)){//same for y values
             obj1.speedX = -obj1.speedX;//speedX becomes negative
           }
+    
+      }
     }
+    function scoreCheck (gameItem){
+      if(gameItem.score > 3){
+        endGame();
+  }  
   }
-}
+    
+
+//What do you call a fish wearing a bowtie? "Sofishticated".
 
 
-
-
+  }
