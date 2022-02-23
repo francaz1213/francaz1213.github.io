@@ -48,10 +48,11 @@ function runProgram(){
     redrawGameItem(rightPaddle);
     repositionGameItem(ball);
     redrawGameItem(ball);
-    //wallCollision(leftPaddle);
-    //wallCollision(rightPaddle);
-    //wallCollision(ball);
-    //console.log(rightPaddle);
+    wallCollision(leftPaddle);
+    wallCollision(rightPaddle);
+    wallCollision(ball);
+    doCollide(ball, leftPaddle);
+    doCollide(ball, rightPaddle);
   }
   
   /* 
@@ -63,11 +64,11 @@ function runProgram(){
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
   function startBall(){
-    ball.speedX = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
-    ball.speedY = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
+    ball.speedX = (Math.random() * 2 + 2) * (Math.random() > 0.5 ? -1 : 1);
+    ball.speedY = (Math.random() * 2 + 2) * (Math.random() > 0.5 ? -1 : 1);
   }
   
-  }
+  
   function endGame() {
     // stop the interval timer
     clearInterval(interval);
@@ -87,6 +88,7 @@ function runProgram(){
     gameItem.speedY = 0;
     gameItem.speedX = 0;
     gameItem.hit = false;
+    gameItem.score = 0;
     return gameItem;
   }
   //HANDLE KEY FUNCTION
@@ -101,11 +103,11 @@ function runProgram(){
   //HANDLE KEY UP FUNCTION
   function handleKeyUp(event){
     if(event.which === KEY.UPKEY ){
-      leftPaddle.speedY = 7.5;//set speed of leftPaddle to -7.5
+      leftPaddle.speedY = 12;//set speed of leftPaddle to -7.5
       repositionGameItem(leftPaddle);
     }
     else if(event.which === KEY.UPARROW ){
-      rightPaddle.speedY = 7.5;//set speed of rightPaddle to -7.5
+      rightPaddle.speedY = 12;//set speed of rightPaddle to -7.5
       repositionGameItem(rightPaddle);
     }
   }
@@ -121,11 +123,11 @@ function runProgram(){
   //HANDLE KEY DOWN FUNCTIOn
   function handleKeyDown(event){
     if(event.which === KEY.DOWNARROW ){
-      rightPaddle.speedY = -7.5;//sets speed of rightPaddle to 7.5
+      rightPaddle.speedY = -12;//sets speed of rightPaddle to 7.5
       repositionGameItem(rightPaddle);//reposition rightPaddle
     }
     else if(event.which === KEY.DOWNKEY ){
-      leftPaddle.speedY = -7.5;//sets speed of leftPaddle to 7.5
+      leftPaddle.speedY = -12;//sets speed of leftPaddle to 7.5
       repositionGameItem(leftPaddle);//reposition leftPaddle
     }
   }
@@ -141,31 +143,40 @@ function runProgram(){
   }
   //WALL COLLISION
   function wallCollision(gameItem){//checks if gameItem has hit the board limit, if yes sets hit = true
-    if(gameItem.x <= 0){
+    if(gameItem.x <= BOARD_X){
         gameItem.hit = true;
-    }
-    else{
-      gameItem.hit = false;
+        rightPaddle.score += 1;
+        startBall();
+        $('#scoreplayer2').text(rightPaddle.score);
+        startBall();
+        ball.x = 220;
+        ball.y = 220;
     }
     if(gameItem.x + gameItem.width >= BOARD_WIDTH){
       gameItem.hit = true;
+      leftPaddle.score += 1;
+      $('#scoreplayer1').text(leftPaddle.score);
+      startBall();
+      ball.x = 220;
+      ball.y = 220;
     }
-    else{
-      gameItem.hit = false;
-    }
-    if(gameItem.y <= 0){
+    if(gameItem.y <= BOARD_Y){
       gameItem.hit = true;
+      gameItem.speedY = -gameItem.speedY;
     }
-    else{
-      gameItem.hit = false;
-    }
-    if(gameItem.Y + gameItem.height >= BOARD_HEIGHT){
+    if(gameItem.y + gameItem.height >= BOARD_HEIGHT){
       gameItem.hit = true;
+      gameItem.speedY = -gameItem.speedY;
+      
     }
-    else{
-      gameItem.hit = false;
+      }
+      function doCollide(obj1, obj2){
+        if((obj1.x + obj1.width) >= obj2.x && (obj1.x + obj1.width) < (obj2.x + obj2.width)){
+          if((obj1.y + obj1.height) >= obj2.y && (obj1.y + obj1.height) <= (obj2.y + obj2.height)){
+            obj1.speedX = -obj1.speedX;
+          }
     }
-    
+  }
 }
 
 
